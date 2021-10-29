@@ -4,6 +4,14 @@ const typeDefs = gql`
   type User {
     _id: ID
     email: String
+    username: String
+  }
+
+  type Restaurant {
+    _id: ID
+    name: String
+    address: String
+    postcode: Int
   }
 
   type Auth {
@@ -12,13 +20,15 @@ const typeDefs = gql`
   }
 
   type Query {
-    user: User
+    getUser(_id: ID!): User
+    getAllUsers: [User]
   }
 
   type Mutation {
-    addUser(email: String!, password: String!): Auth
+    addUser(email: String!, password: String!, username: String!): Auth
     updateUser(email: String, password: String): User
     login(email: String!, password: String!): Auth
+    addRestaurant(name: String, address: String, postcode:Int): Restaurant
   }
 `;
 
