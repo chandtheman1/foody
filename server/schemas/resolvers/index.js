@@ -3,9 +3,11 @@ const userResolver = require('./userResolver');
 
 module.exports = {
     Query: {
-        ...userResolver.Query
+        ...userResolver.Query,
+        ...restaurantResolver.Query
     },
     Mutation: {
-        ...userResolver.Mutation
+        ...userResolver.Mutation,
+        ...restaurantResolver.Mutation
     }
 }
