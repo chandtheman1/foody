@@ -15,7 +15,7 @@ function AddRestaurant() {
                 postcode: formState.postcode
             }
         });
-        console.log(mutationResponse)
+        window.location.assign('/');
     }
 
     const handleChange = (event) => {
