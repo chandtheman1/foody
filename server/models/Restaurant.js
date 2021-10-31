@@ -17,7 +17,7 @@ const restaurantSchema = new Schema({
         unique: true
     },
     postcode: {
-        type: Number,
+        type: String,
         required: true
     },
     author: {

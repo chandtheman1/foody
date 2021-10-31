@@ -11,7 +11,7 @@ const typeDefs = gql`
     _id: ID
     name: String
     address: String
-    postcode: Int
+    postcode: String
     author: User
     wishlist: [User]
     favourite: [User]
@@ -47,8 +47,8 @@ const typeDefs = gql`
     updateUser(email: String, password: String): User
     login(email: String!, password: String!): Auth
 
-    addRestaurant(name: String, address: String, postcode:Int): Restaurant
-    updateRestaurant(_id: ID!, name: String, address: String, postcode: Int): Restaurant
+    addRestaurant(name: String, address: String, postcode:String): Restaurant
+    updateRestaurant(_id: ID!, name: String, address: String, postcode: String): Restaurant
     deleteRestaurant(_id: ID!): Restaurant
     addWishlist(_id: ID!): Restaurant
     addFavourite(_id: ID!): Restaurant

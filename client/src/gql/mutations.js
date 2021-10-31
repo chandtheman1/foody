@@ -29,3 +29,22 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const ADD_RESTAURANT = gql`
+  mutation addRestaurant(
+    $name: String!
+    $address: String!
+    $postcode: String!
+  ) {
+    addRestaurant(
+      name: $name
+      address: $address
+      postcode: $postcode
+    ) {
+      _id
+      name
+      address
+      postcode
+    }
+  }
+`
