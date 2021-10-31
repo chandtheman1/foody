@@ -10,6 +10,7 @@ const restaurantSchema = new Schema({
         trim: true,
         min: 3,
         max: 50,
+        sparse: true
     },
     address: {
         type: String,
