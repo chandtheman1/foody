@@ -72,8 +72,6 @@ function Login(props) {
           <img src={img} />
         </div>
       </div>
-
-
     </>
   );
 }
