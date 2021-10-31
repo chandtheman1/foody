@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
+const User = require('./User')
 
 const restaurantSchema = new Schema({
     name: {
@@ -19,13 +20,19 @@ const restaurantSchema = new Schema({
         type: Number,
         required: true
     },
+    author: {
+        type: Schema.Types.ObjectId,
+    },
     wishlist: [
         {
-            username: {
-                type: Schema.Types.ObjectId,
-                ref: 'User',
-            },
-            createdAt: String,
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        }
+    ],
+    favourite: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
         }
     ],
     reviews: [

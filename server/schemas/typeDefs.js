@@ -12,6 +12,17 @@ const typeDefs = gql`
     name: String
     address: String
     postcode: Int
+    author: User
+    wishlist: [User]
+    favourite: [User]
+  }
+
+  type Review {
+    _id: ID
+    body: String
+    score: Int
+    username: String
+    createdAt: String
   }
 
   type Auth {
@@ -35,6 +46,8 @@ const typeDefs = gql`
     addRestaurant(name: String, address: String, postcode:Int): Restaurant
     updateRestaurant(_id: ID! name: String, address: String, postcode: Int): Restaurant
     deleteRestaurant(_id: ID!): Restaurant
+    addWishlist(_id: ID!): Restaurant
+    addFavourite(_id: ID!): Restaurant
   }
 `;
 
