@@ -4,19 +4,16 @@ import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 import { ADD_USER } from '../gql/mutations';
 
-import { Container } from '../components/Container';
-import { H2 } from '../components/Text';
-import { Breadcrumb } from '../components/Breadcrumb';
-import { Button } from '../components/Button';
 
 function Signup(props) {
-  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [formState, setFormState] = useState({ username: '', email: '', password: '' });
   const [addUser] = useMutation(ADD_USER);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     const mutationResponse = await addUser({
       variables: {
+        username: formState.username,
         email: formState.email,
         password: formState.password
       },
@@ -35,35 +32,45 @@ function Signup(props) {
 
   return (
     <>
-      <Breadcrumb location={'/login'} text={`← Go to Login`} />
-      <Container>
-        <H2>Signup</H2>
-        <form onSubmit={handleFormSubmit}>
-          <div className="flex-row space-between my-2">
-            <label htmlFor="email">Email:</label>
-            <input
-              placeholder="youremail@test.com"
-              name="email"
-              type="email"
-              id="email"
-              onChange={handleChange}
-            />
-          </div>
-          <div className="flex-row space-between my-2">
-            <label htmlFor="pwd">Password:</label>
-            <input
-              placeholder="******"
-              name="password"
-              type="password"
-              id="pwd"
-              onChange={handleChange}
-            />
-          </div>
-          <div className="flex-row flex-end">
-            <Button type="submit">Submit</Button>
-          </div>
-        </form>
-      </Container>
+
+      <h2>Sign UP</h2>
+      <form className="ui form" onSubmit={handleFormSubmit}>
+        <div className="field">
+          <label htmlFor="username">Username:</label>
+          <input
+            placeholder="username"
+            name="username"
+            type="text"
+            id="username"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="field">
+          <label htmlFor="email">Email:</label>
+          <input
+            placeholder="youremail@test.com"
+            name="email"
+            type="email"
+            id="email"
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="field">
+          <label htmlFor="pwd">Password:</label>
+          <input
+            placeholder="******"
+            name="password"
+            type="password"
+            id="pwd"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="flex-row flex-end">
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+
     </>
   );
 }
