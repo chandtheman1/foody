@@ -11,7 +11,7 @@ const reviewSchema = new Schema({
         type: Number,
         required: true,
     },
-    username: {
+    author: {
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true,
@@ -19,6 +19,11 @@ const reviewSchema = new Schema({
     createdAt: {
         type: String,
         required: true
+    },
+    restaurantId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Restaurant',
+        required: true,
     }
 })
 

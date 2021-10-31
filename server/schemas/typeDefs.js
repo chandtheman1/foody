@@ -15,14 +15,16 @@ const typeDefs = gql`
     author: User
     wishlist: [User]
     favourite: [User]
+    reviews: [Review]
   }
 
   type Review {
     _id: ID
     body: String
     score: Int
-    username: String
+    author: User
     createdAt: String
+    restaurantId: Restaurant
   }
 
   type Auth {
@@ -36,6 +38,8 @@ const typeDefs = gql`
 
     getRestaurant(_id: ID!): Restaurant
     getAllRestaurants: [Restaurant]
+
+    getReview(_id: ID!): Review
   }
 
   type Mutation {
@@ -44,10 +48,13 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
 
     addRestaurant(name: String, address: String, postcode:Int): Restaurant
-    updateRestaurant(_id: ID! name: String, address: String, postcode: Int): Restaurant
+    updateRestaurant(_id: ID!, name: String, address: String, postcode: Int): Restaurant
     deleteRestaurant(_id: ID!): Restaurant
     addWishlist(_id: ID!): Restaurant
     addFavourite(_id: ID!): Restaurant
+
+    addReview(restaurantId: ID!, body: String, score: Int): Review
+    deleteReview(_id: ID!): Review
   }
 `;
 
