@@ -7,7 +7,7 @@ const restaurantResolver = {
     Query: {
         getRestaurant: async (parent, args, context) => {
             const { _id } = args;
-            const restaurant = await Restaurant.findById(_id);
+            const restaurant = await Restaurant.findById(_id).populate('reviews').populate('author').populate('favourite');
             return restaurant;
         },
         getAllRestaurants: async (parent, args, context) => {

@@ -1,5 +1,6 @@
 import React from "react";
 import Auth from '../utils/auth';
+import { Link } from 'react-router-dom';
 import { useQuery } from "@apollo/client";
 import { QUERY_ALL_RESTAURANTS } from '../gql/queries';
 import { checkWishlist, checkFavourite } from "../utils/helpers";
@@ -31,30 +32,32 @@ const Home = () => {
           </div>
 
         ) : (
-          restaurants && restaurants.map(restaurant => (
-            <div className="ui card" key={restaurant._id}>
-              <div className="content">
-                {restaurant.name}
-              </div>
-              <div className='image'>
-                <img></img>
-              </div>
-              <div className="content">
+          <div className="ui two column  grid">{
+            restaurants && restaurants.map(restaurant => (
 
-                <RatingStar className='item' />
-
-                <div>
-                  <WishlistButton _id={_id} restaurant={restaurant} />
+              <div className="ui card column equal width " key={restaurant._id}>
+                <div className="content">
+                  {restaurant.name}
+                  <Link to={`/restaurant/${restaurant._id}`}>Learn more</Link>
                 </div>
-                <div>
-                  <FavouriteButton _id={_id} restaurant={restaurant} />
+                <div className='image'>
+                  <img></img>
+                </div>
+                <div className="content">
+
+                  <RatingStar className='item' />
+
+                  <div>
+                    <WishlistButton _id={_id} restaurant={restaurant} />
+                  </div>
+                  <div>
+                    <FavouriteButton _id={_id} restaurant={restaurant} />
+                  </div>
                 </div>
 
-
               </div>
-
-            </div>
-          ))
+            ))}
+          </div>
         )}
 
       </>
