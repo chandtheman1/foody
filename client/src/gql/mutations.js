@@ -48,3 +48,16 @@ export const ADD_RESTAURANT = gql`
     }
   }
 `
+
+export const ADD_WISHLIST = gql`
+mutation addWishlist(
+  $_id: ID!
+){
+  addWishlist(
+    _id: $_id
+  ) {
+    _id
+    name
+  }
+}
+`

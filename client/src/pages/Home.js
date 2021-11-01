@@ -44,7 +44,6 @@ const Home = () => {
                 <RatingStar className='item' />
 
                 <div>
-                  {checkWishlist(restaurant)}
                   <WishlistButton _id={_id} restaurant={restaurant} />
                 </div>
                 <div>
