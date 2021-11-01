@@ -31,10 +31,10 @@ function WishlistButton({ _id, restaurant }) {
 
     return (
         <>
-            <div>
+            <span>
                 {wishlistCounter}
                 {wishlistButton}
-            </div>
+            </span>
 
         </>
     )

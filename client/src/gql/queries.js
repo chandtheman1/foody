@@ -1,12 +1,5 @@
 import { gql } from '@apollo/client';
 
-export const QUERY_USER = gql`
-  {
-    user {
-      email
-    }
-  }
-`;
 
 export const QUERY_ALL_RESTAURANTS = gql`
   {
@@ -36,6 +29,21 @@ export const QUERY_ALL_RESTAURANTS = gql`
     }
   }
 `
+
+
+export const QUERY_USER = gql`
+  query getuser($_id: ID!) {
+    getUser(
+      _id: $_id
+    ){
+      _id
+      email
+      username
+    }
+    
+  }
+`;
+
 
 export const QUERY_RESTAURANT = gql`
   query getRestaurant($_id: ID!) {

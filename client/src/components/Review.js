@@ -6,7 +6,11 @@ import Auth from "../utils/auth";
 import { ADD_REVIEW } from '../gql/mutations';
 import { QUERY_RESTAURANT } from '../gql/queries'
 
-
+const styles = {
+    padding: {
+        padding: '10px'
+    }
+}
 const Review = ({ restaurantId }) => {
     // console.log(restaurantId);
     const [formState, setFormState] = useState({ body: '', score: null });
@@ -31,12 +35,13 @@ const Review = ({ restaurantId }) => {
 
             }
         })
+        window.location.reload(); // will need to remove this
     }
 
     const handleChange = (event) => {
         const { name, value } = event.target;
-        console.log(name)
-        console.log(value)
+        // console.log(name)
+        // console.log(value)
         setFormState({
 
             ...formState,
@@ -83,9 +88,9 @@ const Review = ({ restaurantId }) => {
                 <div className="ui container">
                     {
                         reviews && reviews.map(review => (
-                            <div className="column" key={review._id}>
+                            <div className="column divided" key={review._id} style={styles.padding}>
                                 <h2>{review.body}</h2>
-                                <h3>Score: {review.score}</h3>
+                                <p>Score: {review.score}</p>
                             </div>
                         ))
                     }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
+import { Link } from 'react-router-dom';
 import { LOGIN } from '../gql/mutations';
 import Auth from '../utils/auth';
 import img from '../assets/images/banquet.jpg'
@@ -39,6 +40,7 @@ function Login(props) {
         <div className='column'>
           <img src={logo}></img>
           <h2>Login</h2>
+          <p>Do not have an account? <Link to='/signup'>Sign Up</Link></p>
           <form className="ui form" onSubmit={handleFormSubmit}>
             <div className="field">
               <label htmlFor="email">Email address:</label>

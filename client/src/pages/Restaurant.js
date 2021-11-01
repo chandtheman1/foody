@@ -6,7 +6,7 @@ import RatingStar from '../components/RatingStar';
 import WishlistButton from "../components/WishlistButton";
 import FavouriteButton from "../components/FavouriteButton";
 import Review from "../components/Review";
-
+import logo from '../assets/images/foodyLogoHighRes.png'
 
 
 const Restaurant = () => {
@@ -30,6 +30,7 @@ const Restaurant = () => {
                 <h1>Loading...</h1>
             ) : (
                 <div className="ui container">
+                    <img src={logo} style={{ width: "300px" }} className="centered"></img>
                     <h1>{restaurant.name}</h1>
                     <img></img>
                     <h2>Address:

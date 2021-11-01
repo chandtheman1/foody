@@ -41,7 +41,11 @@ const restaurantSchema = new Schema({
             type: Schema.Types.ObjectId,
             ref: 'Review'
         }
-    ]
+    ],
+    img: {
+        data: Buffer,
+        contentType: String
+    }
 });
 
 const Restaurant = mongoose.model('Restaurant', restaurantSchema);

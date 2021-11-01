@@ -4,12 +4,17 @@ import { Link } from 'react-router-dom';
 import { useQuery } from "@apollo/client";
 import { QUERY_ALL_RESTAURANTS } from '../gql/queries';
 import { checkWishlist, checkFavourite } from "../utils/helpers";
+import logo from '../assets/images/foodyLogoHighRes.png'
 
 import RatingStar from '../components/RatingStar';
 import WishlistButton from "../components/WishlistButton";
 import FavouriteButton from "../components/FavouriteButton";
 
-
+const styles = {
+  margin: {
+    margin: '0px'
+  }
+}
 
 const Home = () => {
 
@@ -20,7 +25,7 @@ const Home = () => {
 
   // console.log(Auth.getToken());
   const _id = Auth.getId();
-  console.log(_id)
+  // console.log(_id)
 
   if (Auth.loggedIn()) {
     return (
@@ -32,32 +37,42 @@ const Home = () => {
           </div>
 
         ) : (
-          <div className="ui two column  grid">{
-            restaurants && restaurants.map(restaurant => (
+          <div className="ui container">
+            <img src={logo} style={{ width: "300px" }} className="centered"></img>
+            <div className="ui two column grid">{
+              restaurants && restaurants.map(restaurant => (
 
-              <div className="ui card column equal width " key={restaurant._id}>
-                <div className="content">
-                  {restaurant.name}
-                  <Link to={`/restaurant/${restaurant._id}`}>Learn more</Link>
-                </div>
-                <div className='image'>
-                  <img></img>
-                </div>
-                <div className="content">
+                <div className="ui card column equal width " key={restaurant._id} style={styles.margin} >
+                  <div className="content">
+                    <Link to={`/restaurant/${restaurant._id}`} style={{ textDecoration: 'none' }}>
+                      <h2>{restaurant.name}</h2>
+                    </Link>
+                  </div>
+                  <div className='image'>
+                    <img></img>
+                  </div>
+                  <div className="content">
+                    <h3>{restaurant.address}</h3>
+                  </div>
+                  <div className="content">
 
-                  <RatingStar className='item' />
 
-                  <div>
+
+
                     <WishlistButton _id={_id} restaurant={restaurant} />
-                  </div>
-                  <div>
+
+
                     <FavouriteButton _id={_id} restaurant={restaurant} />
+
                   </div>
+
                 </div>
 
-              </div>
-            ))}
+
+              ))}
+            </div>
           </div>
+
         )}
 
       </>

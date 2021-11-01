@@ -39,6 +39,7 @@ function Signup(props) {
         <div className='column'>
           <img src={logo}></img>
           <h2>Sign up</h2>
+          <p>Already have an account? <Link to='/login'>Login</Link></p>
           <form className="ui form" onSubmit={handleFormSubmit}>
             <div className="field">
               <label htmlFor="username">Username:</label>

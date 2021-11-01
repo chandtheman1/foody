@@ -28,10 +28,10 @@ function FavouriteButton({ _id, restaurant }) {
 
     return (
         <>
-            <div>
+            <span>
                 {favouriteCounter}
                 {favouriteButton}
-            </div>
+            </span>
         </>
     )
 }

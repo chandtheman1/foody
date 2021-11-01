@@ -16,6 +16,7 @@ const typeDefs = gql`
     wishlist: [User]
     favourite: [User]
     reviews: [Review]
+    img: String
   }
 
   type Review {
@@ -47,7 +48,7 @@ const typeDefs = gql`
     updateUser(email: String, password: String): User
     login(email: String!, password: String!): Auth
 
-    addRestaurant(name: String, address: String, postcode:String): Restaurant
+    addRestaurant(name: String, address: String, postcode:String, img:String): Restaurant
     updateRestaurant(_id: ID!, name: String, address: String, postcode: String): Restaurant
     deleteRestaurant(_id: ID!): Restaurant
     addWishlist(_id: ID!): Restaurant
