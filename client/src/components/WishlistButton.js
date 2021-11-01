@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useMutation } from "@apollo/client";
 import { gql } from "@apollo/client";
 
-function WishlistButton({ user, restaurant }) {
+function WishlistButton({ _id, restaurant }) {
     const [wishlist, setWishlist] = useState(false);
 
     useEffect(() => {
-        if (user && restaurant.wishlist.find((restaurant) => restaurant.wishlist === user._id)) {
+        if (_id && restaurant.wishlist.find((restaurant) => restaurant._id === _id)) {
             setWishlist(true);
         } else setWishlist(false);
-    }, [user, restaurant]);
+    }, [_id, restaurant]);
 
     const wishlistButton = wishlist ? (
         <i className="bookmark icon right item"></i>

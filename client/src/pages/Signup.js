@@ -20,7 +20,9 @@ function Signup(props) {
       },
     });
     const token = mutationResponse.data.addUser.token;
-    Auth.login(token);
+    const _id = mutationResponse.data.addUser.user._id;
+
+    Auth.login(token, _id);
   };
 
   const handleChange = (event) => {

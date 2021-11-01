@@ -18,7 +18,8 @@ const Home = () => {
   console.log(restaurants);
 
   // console.log(Auth.getToken());
-  console.log(Auth.getId())
+  const _id = Auth.getId();
+  console.log(_id)
 
   if (Auth.loggedIn()) {
     return (
@@ -44,10 +45,10 @@ const Home = () => {
 
                 <div>
                   {checkWishlist(restaurant)}
-                  <WishlistButton />
+                  <WishlistButton _id={_id} restaurant={restaurant} />
                 </div>
                 <div>
-                  {checkFavourite(restaurant)}<i className="heart icon right item"></i>
+                  {checkFavourite(restaurant)}<i className="heart outline icon right item"></i>
                 </div>
 
 
