@@ -6,7 +6,7 @@ import { checkWishlist, checkFavourite } from "../utils/helpers";
 
 import RatingStar from '../components/RatingStar';
 import WishlistButton from "../components/WishlistButton";
-
+import FavouriteButton from "../components/FavouriteButton";
 
 
 
@@ -47,7 +47,7 @@ const Home = () => {
                   <WishlistButton _id={_id} restaurant={restaurant} />
                 </div>
                 <div>
-                  {checkFavourite(restaurant)}<i className="heart outline icon right item"></i>
+                  <FavouriteButton _id={_id} restaurant={restaurant} />
                 </div>
 
 

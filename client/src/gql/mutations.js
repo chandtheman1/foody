@@ -61,3 +61,16 @@ mutation addWishlist(
   }
 }
 `
+
+export const ADD_FAVOURITE = gql`
+mutation addFavourite(
+  $_id: ID!
+){
+  addFavourite(
+    _id: $_id
+  ) {
+    _id
+    name
+  }
+}
+`

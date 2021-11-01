@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useMutation } from "@apollo/client";
 import { gql } from "@apollo/client";
 import { ADD_WISHLIST } from '../gql/mutations';
-import { checkWishlist, checkFavourite } from "../utils/helpers";
+import { checkWishlist } from "../utils/helpers";
 
 function WishlistButton({ _id, restaurant }) {
     const [wishlist, setWishlist] = useState(false);
