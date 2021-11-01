@@ -4,13 +4,22 @@ import RatingStar from '../components/RatingStar';
 import RatingExampleOnRate from '../components/RatingSlider';
 import Auth from "../utils/auth";
 import { ADD_REVIEW } from '../gql/mutations';
+import { QUERY_RESTAURANT } from '../gql/queries'
 
 
 const Review = ({ restaurantId }) => {
-    console.log(restaurantId);
+    // console.log(restaurantId);
     const [formState, setFormState] = useState({ body: '', score: null });
-    const [addReview, { data, loading, error }] = useMutation(ADD_REVIEW);
+    const [addReview] = useMutation(ADD_REVIEW);
 
+    const { data, loading } = useQuery(QUERY_RESTAURANT, {
+        variables: { _id: restaurantId }
+    })
+
+
+
+    const reviews = data?.getRestaurant?.reviews
+    console.log(reviews);
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
@@ -70,11 +79,17 @@ const Review = ({ restaurantId }) => {
                         <button type="submit">Submit</button>
                     </div>
 
-
-
-
-
                 </form>
+                <div className="ui container">
+                    {
+                        reviews && reviews.map(review => (
+                            <div className="column" key={review._id}>
+                                <h2>{review.body}</h2>
+                                <h3>Score: {review.score}</h3>
+                            </div>
+                        ))
+                    }
+                </div>
             </div>
         </>
     )

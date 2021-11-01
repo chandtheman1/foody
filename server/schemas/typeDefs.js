@@ -39,7 +39,7 @@ const typeDefs = gql`
     getRestaurant(_id: ID!): Restaurant
     getAllRestaurants: [Restaurant]
 
-    getReview(_id: ID!): Review
+    getReviews(restaurantId: ID!): [Review]
   }
 
   type Mutation {

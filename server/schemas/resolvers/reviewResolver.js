@@ -4,7 +4,7 @@ const { signToken } = require('../../utils/auth');
 
 const reviewResolver = {
     Query: {
-        getReview: async (parent, args, context) => {
+        getReviews: async (parent, args, context) => {
             const { _id } = args;
             const review = await Review.findById(_id).populate('author').populate('restaurantId');
             return review;
