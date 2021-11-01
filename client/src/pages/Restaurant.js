@@ -5,6 +5,7 @@ import { QUERY_RESTAURANT } from '../gql/queries';
 import RatingStar from '../components/RatingStar';
 import WishlistButton from "../components/WishlistButton";
 import FavouriteButton from "../components/FavouriteButton";
+import Review from "../components/Review";
 
 
 
@@ -22,6 +23,7 @@ const Restaurant = () => {
     const restaurant = data?.getRestaurant;
 
     const addressQuery = restaurant?.address.split(' ').join('+')
+    // console.log(restaurant._id);
     return (
         <>
             {loading ? (
@@ -38,7 +40,7 @@ const Restaurant = () => {
                         </a>
                     </h2>
 
-
+                    <Review restaurantId={restaurant._id} />
                 </div>
             )}
 

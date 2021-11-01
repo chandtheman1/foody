@@ -49,6 +49,28 @@ export const ADD_RESTAURANT = gql`
   }
 `
 
+export const ADD_REVIEW = gql`
+  mutation addReview(
+    $restaurantId: ID!
+    $body: String!
+    $score: Int
+  ) {
+    addReview(
+      restaurantId: $restaurantId
+      body: $body
+      score: $score
+    ) {
+      _id
+      body
+      score
+      author {
+        _id
+      }
+      createdAt
+    }
+  }
+`
+
 export const ADD_WISHLIST = gql`
 mutation addWishlist(
   $_id: ID!
