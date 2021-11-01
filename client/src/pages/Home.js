@@ -5,6 +5,7 @@ import { QUERY_ALL_RESTAURANTS } from '../gql/queries';
 import { checkWishlist, checkFavourite } from "../utils/helpers";
 
 import RatingStar from '../components/RatingStar';
+import WishlistButton from "../components/WishlistButton";
 
 
 
@@ -16,11 +17,18 @@ const Home = () => {
   const restaurants = data?.getAllRestaurants;
   console.log(restaurants);
 
+  // console.log(Auth.getToken());
+  console.log(Auth.getId())
+
   if (Auth.loggedIn()) {
     return (
       <>
         {loading ? (
-          <h2>Loading...</h2>
+          <div>
+            <h2>Loading...</h2>
+
+          </div>
+
         ) : (
           restaurants && restaurants.map(restaurant => (
             <div className="ui card" key={restaurant._id}>
@@ -35,10 +43,11 @@ const Home = () => {
                 <RatingStar className='item' />
 
                 <div>
-                  {checkWishlist(restaurant)} <i className="heart outline icon right item"></i>
+                  {checkWishlist(restaurant)}
+                  <WishlistButton />
                 </div>
                 <div>
-                  <i class="bookmark icon right item"></i>
+                  {checkFavourite(restaurant)}<i className="heart icon right item"></i>
                 </div>
 
 

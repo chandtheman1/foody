@@ -3,7 +3,7 @@ const checkWishlist = (parent) => {
 }
 
 const checkFavourite = (parent) => {
-    return parent.wishlist.length
+    return parent.favourite.length
 }
 
 module.exports = {
